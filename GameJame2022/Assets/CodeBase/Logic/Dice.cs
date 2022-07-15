@@ -19,7 +19,6 @@ namespace CodeBase.Logic
 
 		private void OnSideActivate(int index, Collider2D other)
 		{
-			Debug.Log($"Side number {index} is activated");
 		}
 
 		private void OnSideDeactivate(int index, Collider2D other)
