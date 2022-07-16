@@ -9,7 +9,7 @@ namespace CodeBase.Player.Controls
 		[SerializeField] private PlayerJumper _jumper;
 		[SerializeField] private PlayerCursorLooker _looker;
 		[SerializeField] private BaseWeapon _weapon;
-		
+
 		private PlayerController _input;
 		
 		private void Awake()
@@ -34,7 +34,7 @@ namespace CodeBase.Player.Controls
 		private void Update()
 		{
 			var direction = _input.Player.Move.ReadValue<float>();
-
+			
 			_mover.Move(direction);
 		}
 	}
