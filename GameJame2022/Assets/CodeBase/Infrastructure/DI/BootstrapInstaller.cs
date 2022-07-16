@@ -1,7 +1,12 @@
-﻿namespace CodeBase.Infrastructure.DI
+﻿using Zenject;
+
+namespace CodeBase.Infrastructure.DI
 {
-	public class BootstrapInstaller
+	public class BootstrapInstaller : MonoInstaller
 	{
-		
+		public override void InstallBindings()
+		{
+			
+		}
 	}
 }

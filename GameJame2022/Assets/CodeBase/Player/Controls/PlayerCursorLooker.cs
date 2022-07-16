@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerCursorLooker : MonoBehaviour
@@ -21,7 +21,7 @@ namespace CodeBase.Player
 			{
 				_activated = value;
 				
-				_mirror.Flips = false;
+				_mirror.ResetAllMirroring();
 				_rigidbody.rotation = 0;
 			}
 		}
@@ -57,8 +57,8 @@ namespace CodeBase.Player
 
 		private void Mirroring(float angle)
 		{
-			_mirror.Rotatable = _activated;
-			_mirror.Flips = angle is > 90 or < -90;
+			bool isNeedMirror = angle is > 90 or < -90;
+			_mirror.Flips(isNeedMirror, _activated);
 		}
 	}
 }

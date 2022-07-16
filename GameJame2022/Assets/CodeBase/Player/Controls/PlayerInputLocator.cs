@@ -1,7 +1,8 @@
 ﻿using CodeBase.Weapon;
 using UnityEngine;
+using Zenject;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	public class PlayerInputLocator : MonoBehaviour
 	{
@@ -11,6 +12,12 @@ namespace CodeBase.Player
 		[SerializeField] private BaseWeapon _weapon;
 		
 		private PlayerController _input;
+		
+		// [Inject]
+		// public void Construct(BaseWeapon weapon)
+		// {
+		// 	_weapon = weapon;
+		// }
 		
 		private void Awake()
 		{
