@@ -58,11 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2647888328976667813}
   - component: {fileID: 2158402288735730617}
-<<<<<<< HEAD
-  - component: {fileID: 5440617888399628182}
-=======
   - component: {fileID: 983111631801680165}
->>>>>>> 68bdeacdd8c4454194ccb074c88766b9f4376762
   m_Layer: 13
   m_Name: Legs
   m_TagString: Untagged
@@ -78,11 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715016611738321862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 0.073, y: -1.007, z: 0}
-=======
   m_LocalPosition: {x: -0.004, y: -0.621, z: 0}
->>>>>>> 68bdeacdd8c4454194ccb074c88766b9f4376762
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,11 +121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-<<<<<<< HEAD
-  m_SortingOrder: 0
-=======
   m_SortingOrder: -10
->>>>>>> 68bdeacdd8c4454194ccb074c88766b9f4376762
   m_Sprite: {fileID: 892742121, guid: d0b30b4e23de1bc4c89ced4509f95403, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,11 +133,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
---- !u!95 &5440617888399628182
-=======
 --- !u!95 &983111631801680165
->>>>>>> 68bdeacdd8c4454194ccb074c88766b9f4376762
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -159,7 +143,7 @@ Animator:
   m_GameObject: {fileID: 715016611738321862}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1ccf4e0d2abeeeb46aef9e1393a683d7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7511d6a5197f49444a960eb24efd6905, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
