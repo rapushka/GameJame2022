@@ -23,6 +23,7 @@ namespace CodeBase.Player.Controls
 			movedPosition.x += direction * ScaledSpeed;
 			// ReSharper disable once Unity.InefficientPropertyAccess
 			transform.position = movedPosition;
+
 		}
 	}
 }
