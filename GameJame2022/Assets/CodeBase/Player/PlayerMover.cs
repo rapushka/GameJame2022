@@ -4,7 +4,7 @@ namespace CodeBase.Player
 {
 	public class PlayerMover : MonoBehaviour
 	{
-		[SerializeField] private float _moveSpeed = 1f;
+		[SerializeField] private float _moveSpeed;
 		
 		private float _direction;
 		

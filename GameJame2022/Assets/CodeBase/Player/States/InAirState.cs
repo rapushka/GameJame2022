@@ -11,7 +11,7 @@ namespace CodeBase.Player.States
 
 		public override Vector2 GetJumpDirection(float jumpForce)
 		{
-			return Vector2.zero;
+			return CantJump();
 		}
 	}
 }

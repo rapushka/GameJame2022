@@ -12,7 +12,7 @@ namespace CodeBase.Player.States
 		public override Vector2 GetJumpDirection(float jumpForce)
 		{
 			StateMachine.Enter<InAirState>();
-			return Vector2.up * jumpForce;
+			return NormalJump(jumpForce);
 		}
 	}
 }

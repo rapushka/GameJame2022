@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace CodeBase.Player
 {
@@ -14,8 +13,7 @@ namespace CodeBase.Player
 		{
 			_input = new PlayerController();
 
-			_input.Player.Jump
-			      .performed += OnJump;
+			_input.Player.Jump.performed += (_) => _jumper.Jump();
 		}
 
 		private void OnEnable()
@@ -33,11 +31,6 @@ namespace CodeBase.Player
 			var direction = _input.Player.Move.ReadValue<float>();
 
 			_mover.Move(direction);
-		}
-
-		private void OnJump(InputAction.CallbackContext context)
-		{
-			_jumper.Jump();
 		}
 	}
 }
