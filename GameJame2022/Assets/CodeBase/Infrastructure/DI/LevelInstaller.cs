@@ -16,19 +16,24 @@ namespace CodeBase.Infrastructure.DI
 
 		public override void InstallBindings()
 		{
-			var playerController = Container
-				.InstantiatePrefabForComponent<PlayerInputLocator>
+			Container
+				.Bind<BaseWeapon>()
+				.FromComponentInNewPrefab(_weaponPrefub)
+				.AsSingle();
+
+			Container
+				.Bind<PlayerInputLocator>()
+				.FromComponentInNewPrefab(_playerPrefub)
+				.AsSingle();
+			
+			Container
+				.InstantiatePrefab
 				(
 					_playerPrefub,
 					_initialPoint.position,
 					Quaternion.identity,
 					null
 				);
-
-			Container
-				.Bind<PlayerInputLocator>()
-				.FromInstance(playerController)
-				.AsSingle();
 		}
 
 		private void ResolvePlayerMirror(GameObject player)
