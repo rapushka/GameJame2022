@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67540feed1964e0ba25572ca7ae5faac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Activated: 1
   _mirror: {fileID: 6510231955562150411}
 --- !u!114 &6510231955562150411
 MonoBehaviour:
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd4780824864dcba154c3a47fbb207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rotatable: 0
   _xFlippers:
   - {fileID: 8270895782193026524}
   - {fileID: 2158402288735730617}

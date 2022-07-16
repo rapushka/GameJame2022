@@ -5,6 +5,8 @@ namespace CodeBase.Player
 {
 	public class PlayerMirror : MonoBehaviour
 	{
+		public bool Rotatable;
+
 		[SerializeField] private List<SpriteRenderer> _xFlippers;
 		[SerializeField] private List<SpriteRenderer> _yFlippers;
 
@@ -13,7 +15,15 @@ namespace CodeBase.Player
 			set
 			{
 				_xFlippers.ForEach((s) => s.flipX = value);
-				_yFlippers.ForEach((s) => s.flipY = value);
+				
+				if (Rotatable)
+				{
+					_yFlippers.ForEach((s) => s.flipY = value);
+				}
+				else
+				{
+					_yFlippers.ForEach((s) => s.flipX = value);
+				}
 			}
 		}
 	}
