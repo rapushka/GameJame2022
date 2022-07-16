@@ -7,6 +7,8 @@ namespace CodeBase.Player
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerCursorLooker : MonoBehaviour
 	{
+		[SerializeField] private PlayerMirror _mirror;
+		
 		private Vector2 _cursorPosition;
 		private Camera _camera;
 		private Rigidbody2D _rigidbody;
@@ -26,6 +28,8 @@ namespace CodeBase.Player
 		{
 			Vector2 facingDirection = _cursorPosition - _rigidbody.position;
 			float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+			
+			_mirror.Flip = angle is > 90 or < -90;
 			_rigidbody.MoveRotation(angle);
 		}
 	}
