@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace CodeBase.Player
@@ -12,6 +11,8 @@ namespace CodeBase.Player
 		private Vector2 _cursorPosition;
 		private Camera _camera;
 		private Rigidbody2D _rigidbody;
+
+		public Vector3 Position => _cursorPosition - _rigidbody.position;
 
 		private void Start()
 		{
@@ -26,10 +27,9 @@ namespace CodeBase.Player
 
 		private void FixedUpdate()
 		{
-			Vector2 facingDirection = _cursorPosition - _rigidbody.position;
-			float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+			float angle = Mathf.Atan2(Position.y, Position.x) * Mathf.Rad2Deg;
 			
-			_mirror.Flip = angle is > 90 or < -90;
+			_mirror.Flips = angle is > 90 or < -90;
 			_rigidbody.MoveRotation(angle);
 		}
 	}

@@ -8,19 +8,12 @@ namespace CodeBase.Player
 		[SerializeField] private List<SpriteRenderer> _xFlippers;
 		[SerializeField] private List<SpriteRenderer> _yFlippers;
 
-		public bool Flip
+		public bool Flips
 		{
 			set
 			{
-				foreach (SpriteRenderer sprite in _xFlippers)
-				{
-					sprite.flipX = value;
-				}
-
-				foreach (SpriteRenderer sprite in _yFlippers)
-				{
-					sprite.flipY = value;
-				}
+				_xFlippers.ForEach((s) => s.flipX = value);
+				_yFlippers.ForEach((s) => s.flipY = value);
 			}
 		}
 	}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CodeBase.Weapon;
+using UnityEngine;
 
 namespace CodeBase.Player
 {
@@ -7,6 +8,7 @@ namespace CodeBase.Player
 		[SerializeField] private PlayerMover _mover;
 		[SerializeField] private PlayerJumper _jumper;
 		[SerializeField] private PlayerCursorLooker _looker;
+		[SerializeField] private BaseWeapon _weapon;
 		
 		private PlayerController _input;
 		
@@ -16,6 +18,7 @@ namespace CodeBase.Player
 
 			_input.Player.Jump.performed += (_) => _jumper.Jump();
 			_input.Player.Look.performed += _looker.LookAt;
+			_input.Player.Attack.performed += (_) => _weapon.Shoot(_looker.Position);
 		}
 
 		private void OnEnable()
