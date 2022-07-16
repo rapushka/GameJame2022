@@ -1,32 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase.Player
 {
-	[RequireComponent(typeof(Rigidbody2D))]
-	public class PlayerInputBehaviour : MonoBehaviour
+	public class PlayerMover : MonoBehaviour
 	{
 		[SerializeField] private float _moveSpeed = 1f;
 		
-		private PlayerController _input;
 		private float _direction;
-
+		
 		private float ScaledSpeed => _moveSpeed * Time.fixedDeltaTime;
 
-		private void Awake()
-		{
-			_input = new PlayerController();
-			_input.Enable();
-		}
-
-		private void Update()
-		{
-			_direction = _input.Player.Move.ReadValue<float>();
-
-			Move(_direction);
-		}
-
-		private void Move(float direction)
+		public void Move(float direction)
 		{
 			if (Mathf.Abs(direction) < Constants.Epsilon)
 			{
