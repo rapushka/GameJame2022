@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	public class PlayerMirror : MonoBehaviour
 	{

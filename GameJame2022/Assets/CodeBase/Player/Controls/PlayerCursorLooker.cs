@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerCursorLooker : MonoBehaviour

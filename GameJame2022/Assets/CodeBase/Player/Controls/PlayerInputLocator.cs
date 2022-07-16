@@ -1,7 +1,7 @@
 ﻿using CodeBase.Weapon;
 using UnityEngine;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	public class PlayerInputLocator : MonoBehaviour
 	{

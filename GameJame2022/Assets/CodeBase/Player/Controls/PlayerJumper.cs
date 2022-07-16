@@ -1,7 +1,7 @@
 ﻿using CodeBase.Player.States;
 using UnityEngine;
 
-namespace CodeBase.Player
+namespace CodeBase.Player.Controls
 {
 	[RequireComponent(typeof(Collider2D))]
 	[RequireComponent(typeof(Rigidbody2D))]
