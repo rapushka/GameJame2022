@@ -6,6 +6,7 @@ namespace CodeBase.Player
 	{
 		[SerializeField] private PlayerMover _mover;
 		[SerializeField] private PlayerJumper _jumper;
+		[SerializeField] private PlayerCursorLooker _looker;
 		
 		private PlayerController _input;
 		
@@ -14,6 +15,7 @@ namespace CodeBase.Player
 			_input = new PlayerController();
 
 			_input.Player.Jump.performed += (_) => _jumper.Jump();
+			_input.Player.Look.performed += _looker.LookAt;
 		}
 
 		private void OnEnable()
