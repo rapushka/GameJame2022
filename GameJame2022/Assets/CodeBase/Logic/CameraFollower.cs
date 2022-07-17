@@ -4,38 +4,21 @@ namespace CodeBase.Logic
 {
 	public class CameraFollower : MonoBehaviour
 	{
-		[SerializeField] private float _rotationAngleX;
-		[SerializeField] private float _distance;
-		[SerializeField] private float _offsetY;
+		[SerializeField] private float _smoothSpeed;
+		[SerializeField] private Vector3 _offset;
+
+		private Transform _target;
 		
-		private Transform _followingTarget;
-		
+		private void LateUpdate(){
+
+			Vector3 desiredPosition = _target.position + _offset;
+			Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPosition, _smoothSpeed);
+			transform.position = smoothedPos;
+		}
+
 		public void Follow(GameObject target)
 		{
-			_followingTarget = target.transform;
-		}
-
-		private void LateUpdate()
-		{
-			if (_followingTarget is null)
-			{
-				return;
-			}
-			
-			Quaternion rotation = Quaternion.Euler(_rotationAngleX, 0, 0);
-			Vector3 position = rotation * new Vector3(0, 0, -_distance)
-			                   + FollowingPoint(_followingTarget.position);
-
-			transform.rotation = rotation;
-			// ReSharper disable once Unity.InefficientPropertyAccess
-			transform.position = position;
-		}
-
-		private Vector3 FollowingPoint(Vector3 point)
-		{
-			Vector3 followingPosition = point;
-			followingPosition.y += _offsetY;
-			return followingPosition;
+			_target = target.transform;
 		}
 	}
 }
