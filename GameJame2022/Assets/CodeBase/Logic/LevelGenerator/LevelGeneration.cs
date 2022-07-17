@@ -13,27 +13,28 @@ namespace CodeBase.Logic.LevelGenerator
 		[SerializeField] private float _moveAmount = 10f;
 
 		[Space] [SerializeField] private LayerMask _layer;
-		
+
 		[Space] [SerializeField] private float _minX;
-		
+
 		[SerializeField] private float _maxX;
 		[SerializeField] private float _minY;
-		
+
 		[Space] [SerializeField] private List<Transform> _startingPosition;
+
 		[SerializeField] private List<GameObject> _rooms;
 		// 0 == LR
 		// 1 == LRB
 		// 2 == LRT
 		// 3 == LRTB
 
-
 		private int _direction;
 		private bool _stopGeneration;
+		private int _dowCounter;
 
 		private void Start()
 		{
 			_stopGeneration = false;
-			
+
 			Transform startingPosition = _startingPosition.GetRandomElement();
 			transform.position = startingPosition.position;
 
@@ -55,6 +56,7 @@ namespace CodeBase.Logic.LevelGenerator
 			Vector3 position = transform.position;
 			if (_direction is 1 or 2) // Move Right
 			{
+				_dowCounter = 0;
 				if (position.x < _maxX)
 				{
 					transform.position = new Vector2(position.x + _moveAmount, position.y);
@@ -79,12 +81,13 @@ namespace CodeBase.Logic.LevelGenerator
 			}
 			else if (_direction is 3 or 4) // Move Left
 			{
+				_dowCounter = 0;
 				if (position.x > _minX)
 				{
 					transform.position = new Vector2(position.x - _moveAmount, position.y);
 
 					int index = Random.Range(0, _rooms.Count);
-					Instantiate(_rooms[index], position);
+					Instantiate(_rooms[index], transform.position);
 
 					_direction = Random.Range(3, 6);
 				}
@@ -95,23 +98,33 @@ namespace CodeBase.Logic.LevelGenerator
 			}
 			else if (_direction == 5) // Move Down
 			{
+				_dowCounter++;
+
 				if (position.y > _minY)
 				{
-					Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, _layer);
+					Collider2D roomDetection = Physics2D.OverlapCircle(position, 1, _layer);
 					var roomType = roomDetection.GetComponent<RoomType>();
-					
+
 					if (roomType.Type != 1
 					    && roomType.Type != 3)
 					{
-						roomType.RoomDestruction();
-
-						int bottomRoom = Random.Range(1, 4);
-						if (bottomRoom == 2)
+						if (_dowCounter >= 2)
 						{
-							bottomRoom = 1;
+							roomType.RoomDestruction();
+							Instantiate(_rooms[3], position);
 						}
+						else
+						{
+							roomType.RoomDestruction();
 
-						Instantiate(_rooms[bottomRoom], position);
+							int bottomRoom = Random.Range(1, 4);
+							if (bottomRoom == 2)
+							{
+								bottomRoom = 1;
+							}
+
+							Instantiate(_rooms[bottomRoom], position);
+						}
 					}
 
 					transform.position = new Vector2(position.x, position.y - _moveAmount);
