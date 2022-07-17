@@ -59,6 +59,8 @@ GameObject:
   - component: {fileID: 2647888328976667813}
   - component: {fileID: 2158402288735730617}
   - component: {fileID: 983111631801680165}
+  - component: {fileID: 1734508612867985189}
+  - component: {fileID: 5459384529831141402}
   m_Layer: 13
   m_Name: Legs
   m_TagString: Untagged
@@ -153,6 +155,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1734508612867985189
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715016611738321862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0023841858, y: -0.42527908}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.25, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.37915492, y: 0.21985519}
+  m_EdgeRadius: 0
+--- !u!114 &5459384529831141402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715016611738321862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e52b200b544bafbcaef3eba9d57b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8270895782193026527
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +209,7 @@ GameObject:
   - component: {fileID: 917922754}
   - component: {fileID: 1604231904036283545}
   m_Layer: 13
-  m_Name: Dice Player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +298,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0030087233, y: -0.33452863}
+  m_Offset: {x: -0.0030087233, y: -0.33214474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -269,7 +309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.318912, y: 1.5727817}
+  m_Size: {x: 1.318912, y: 1.5680137}
   m_EdgeRadius: 0
 --- !u!50 &8270895782193026526
 Rigidbody2D:
@@ -317,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06e4c7f537a4122937625427c68e31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _legsTrigger: {fileID: 5459384529831141402}
   _jumpForce: 30
 --- !u!114 &1604231904036283545
 MonoBehaviour:
