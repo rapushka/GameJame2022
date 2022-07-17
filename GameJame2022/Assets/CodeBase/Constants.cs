@@ -13,6 +13,7 @@
 		public static class AssetPaths
 		{
 			public const string PlayerPrefub = "Prefubs/Creatures/Player";
+			public const string KnifeSprite = "Sprites/Templates/Knife";
 		}
 	}
 }

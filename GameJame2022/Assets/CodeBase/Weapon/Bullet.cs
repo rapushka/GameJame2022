@@ -24,14 +24,11 @@ namespace CodeBase.Weapon
 
 		private void DealDamage(Collider2D target)
 		{
-			var enemy = target.GetComponent<BaseEnemy>();
 
-			if (enemy is null)
+			if (target.TryGetComponent(out BaseEnemy enemy))
 			{
-				return;
+				enemy.TakeDamage(_damage);
 			}
-
-			enemy.TakeDamage(_damage);
 		}
 	}
 }
