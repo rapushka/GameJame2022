@@ -1,4 +1,4 @@
-﻿using Unity.Mathematics;
+﻿using CodeBase.Infrastructure;
 using UnityEngine;
 
 namespace CodeBase.Weapon
@@ -7,18 +7,16 @@ namespace CodeBase.Weapon
 	{
 		[SerializeField] private Transform _firePoint;
 		[SerializeField] private GameObject _bulletPrefab;
-		
-		private Vector3 _target;
 
+		public void Construct(Transform firePoint, GameObject bulletPrefab)
+		{
+			_firePoint = firePoint;
+			_bulletPrefab = bulletPrefab;
+		}
+		
 		public override void Shoot(Vector3 target)
 		{
-			_target = target;
 			Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
-		}
-
-		private void OnDrawGizmos()
-		{	
-			Debug.DrawRay(transform.position, _target, Color.red);
 		}
 	}
 }

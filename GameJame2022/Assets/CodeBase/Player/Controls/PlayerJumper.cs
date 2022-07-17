@@ -1,8 +1,5 @@
-﻿using System;
-using CodeBase.Logic;
-using CodeBase.Player.States;
+﻿using CodeBase.Player.States;
 using UnityEngine;
-using Vector3 = System.Numerics.Vector3;
 
 namespace CodeBase.Player.Controls
 {
