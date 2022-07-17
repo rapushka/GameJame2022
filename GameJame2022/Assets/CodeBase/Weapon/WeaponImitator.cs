@@ -1,8 +1,4 @@
-﻿using CodeBase.Logic;
-using Unity.VisualScripting;
-using UnityEditor.Hardware;
-using UnityEditor.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase.Weapon
 {
