@@ -31,6 +31,9 @@ namespace CodeBase.Logic.LevelGenerator
 		private bool _stopGeneration;
 		private int _dowCounter;
 
+		public List<GameObject> Rooms => _rooms;
+		public bool StopGeneration => _stopGeneration;
+
 		private void Start()
 		{
 			_stopGeneration = false;
@@ -45,10 +48,12 @@ namespace CodeBase.Logic.LevelGenerator
 
 		private void Update()
 		{
-			if (_stopGeneration == false)
+			if (_stopGeneration)
 			{
-				Move();
+				return;
 			}
+
+			Move();
 		}
 
 		private void Move()
@@ -149,7 +154,7 @@ namespace CodeBase.Logic.LevelGenerator
 
 		private GameObject GetRoom()
 		{
-			return _rooms[0];
+			return _rooms.GetRandomElement();
 		}
 	}
 }
