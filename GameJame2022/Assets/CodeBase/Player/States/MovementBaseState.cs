@@ -11,7 +11,7 @@ namespace CodeBase.Player.States
 			StateMachine = stateMachine;
 		}
 
-		public abstract Vector2 GetJumpDirection(float jumpForce);
+		public abstract Vector2 GetJumpDirection(float jumpForce, Vector2 velocity);
 
 		protected static Vector2 NormalJump(float jumpForce) 
 			=> Vector2.up * jumpForce;

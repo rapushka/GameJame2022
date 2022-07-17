@@ -13,7 +13,8 @@ namespace CodeBase.Player
 			_states = new Dictionary<Type, MovementBaseState>
 			{
 				[typeof(StandingState)] = new StandingState(this),
-				[typeof(InAirState)] = new InAirState(this),
+				[typeof(SecondJumpState)] = new SecondJumpState(this),
+				[typeof(FirstJumpState)] = new FirstJumpState(this),
 			};
 
 			Enter<StandingState>();

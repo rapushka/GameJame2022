@@ -2,6 +2,7 @@
 using CodeBase.Logic;
 using CodeBase.Player.States;
 using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
 
 namespace CodeBase.Player.Controls
 {
@@ -21,11 +22,14 @@ namespace CodeBase.Player.Controls
 			_stateMachine = new PlayerStateMachine();
 		}
 
-		private Vector2 JumpDirection => _stateMachine.CurrentState.GetJumpDirection(_jumpForce);
+		private Vector2 JumpDirection(Vector2 velocity)
+		{
+			return _stateMachine.CurrentState.GetJumpDirection(_jumpForce, velocity);
+		}
 
 		public void Jump()
 		{
-			_rigidbody.velocity += JumpDirection;
+			_rigidbody.velocity = JumpDirection(_rigidbody.velocity);
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)

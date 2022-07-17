@@ -10,7 +10,6 @@ namespace CodeBase.Weapon
 		[SerializeField] private Rigidbody2D _rigidbody;
 		[SerializeField] private int _damage = 50;
 
-		
 		private void Start()
 		{
 			_rigidbody.velocity = transform.right * _speed;

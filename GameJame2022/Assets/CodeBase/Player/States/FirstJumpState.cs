@@ -2,9 +2,9 @@
 
 namespace CodeBase.Player.States
 {
-	public class StandingState : MovementBaseState
+	public class FirstJumpState : MovementBaseState
 	{
-		public StandingState(PlayerStateMachine stateMachine)
+		public FirstJumpState(PlayerStateMachine stateMachine)
 			: base(stateMachine)
 		{
 		}
@@ -12,7 +12,7 @@ namespace CodeBase.Player.States
 		public override Vector2 GetJumpDirection(float jumpForce, Vector2 velocity)
 		{
 			velocity = Vector2.zero;
-			StateMachine.Enter<FirstJumpState>();
+			StateMachine.Enter<SecondJumpState>();
 			return NormalJump(jumpForce) + velocity;
 		}
 	}
