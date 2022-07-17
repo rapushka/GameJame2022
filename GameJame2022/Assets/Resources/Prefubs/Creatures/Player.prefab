@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 2256941632359102806, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.556
+      objectReference: {fileID: 0}
     - target: {fileID: 6081889239348991961, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
       propertyPath: _xFlippers.Array.size
       value: 2
@@ -358,18 +362,6 @@ PrefabInstance:
     - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
       propertyPath: m_LocalPosition.x
@@ -411,14 +403,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8320111855663108732, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9062181293156148671, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2018064071, guid: d0b30b4e23de1bc4c89ced4509f95403, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa522e7f2f085741be37725fab22251, type: 3}
 --- !u!114 &3437283729748031575 stripped
