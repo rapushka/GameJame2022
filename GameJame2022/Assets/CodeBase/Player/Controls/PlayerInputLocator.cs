@@ -9,7 +9,8 @@ namespace CodeBase.Player.Controls
 		[SerializeField] private PlayerJumper _jumper;
 		[SerializeField] private PlayerCursorLooker _looker;
 		[SerializeField] private BaseWeapon _weapon;
-
+		[SerializeField] private Reroller _reroller;
+		
 		private PlayerController _input;
 		
 		private void Awake()
@@ -19,6 +20,7 @@ namespace CodeBase.Player.Controls
 			_input.Player.Jump.performed += (_) => _jumper.Jump();
 			_input.Player.Look.performed += _looker.LookAt;
 			_input.Player.Attack.performed += (_) => _weapon.Shoot(_looker.Position);
+			_input.Player.Reroll.performed += (_) => _reroller.Reroll();
 		}
 
 		private void OnEnable()

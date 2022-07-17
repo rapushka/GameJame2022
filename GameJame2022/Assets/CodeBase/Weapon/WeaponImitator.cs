@@ -1,5 +1,7 @@
 ﻿using CodeBase.Logic;
 using Unity.VisualScripting;
+using UnityEditor.Hardware;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace CodeBase.Weapon
@@ -8,15 +10,52 @@ namespace CodeBase.Weapon
 	{
 		[SerializeField] private Transform _firePoint;
 		[SerializeField] private GameObject _bulletPrefab;
-		
+
 		[Space] [SerializeField] private GameObject _knifeRange;
+
 		[SerializeField] private float _knifeAttackDuration;
-		
+
 		private BaseWeapon _weapon;
+		private SpriteRenderer _spriteRenderer;
+
+		private Vector3 KnifePosition
+		{
+			get
+			{
+				Vector3 temp = GunPosition;
+				temp.x -= 0.3f;
+				return temp;
+			}
+		}
+		
+		private Vector3 GunPosition => _spriteRenderer.transform.position ;
+
+		public void ConstructRandomWeapon()
+		{
+			RemoveAnotherWeapon();
+
+			int randomNumber = Random.Range(1, 3);
+			
+			if (randomNumber == 1)
+			{
+				ImitateKnife();
+			}
+			else
+			{
+				ImitateDebugWeapon();
+			}
+		}
+
+		public override void Shoot(Vector3 target)
+		{
+			_weapon.Shoot(target);
+		}
 
 		private void Start()
 		{
-			ImitateKnife();
+			_spriteRenderer = GetComponent<SpriteRenderer>();
+			
+			ImitateDebugWeapon();
 		}
 
 		private void ImitateDebugWeapon()
@@ -24,6 +63,9 @@ namespace CodeBase.Weapon
 			_weapon = gameObject.AddComponent<DebugWeapon>();
 
 			((DebugWeapon)_weapon).Construct(_firePoint, _bulletPrefab);
+			
+			_spriteRenderer.sprite = Resources.Load<Sprite>(Constants.AssetPaths.GunSprite);
+			_spriteRenderer.transform.position = GunPosition;
 		}
 
 		private void ImitateKnife()
@@ -31,29 +73,24 @@ namespace CodeBase.Weapon
 			_weapon = gameObject.AddComponent<Knife>();
 			
 			((Knife)_weapon).Construct(_knifeRange, _knifeAttackDuration);
-			
-			SetUpGameObject();
+
+			_spriteRenderer.sprite = Resources.Load<Sprite>(Constants.AssetPaths.KnifeSprite);
+			_spriteRenderer.transform.position = KnifePosition;
 		}
 
-		private void SetUpGameObject()
+		private void RemoveAnotherWeapon()
 		{
-			var spriteRenderer = GetComponent<SpriteRenderer>();
+			var debugWeapon = GetComponent<DebugWeapon>();
+			if (debugWeapon != null)
+			{
+				Destroy(debugWeapon);
+			}
 
-			spriteRenderer.sprite = Resources.Load<Sprite>(Constants.AssetPaths.KnifeSprite);
-			OffsetSpriteRenderer(spriteRenderer, 0.3f);
-			//spriteRenderer.transform.localScale *= 7;
-		}
-
-		private static void OffsetSpriteRenderer(Component spriteRenderer, float offset)
-		{
-			Vector3 position = spriteRenderer.transform.position;
-			position.x += offset;
-			spriteRenderer.transform.position = position;
-		}
-
-		public override void Shoot(Vector3 target)
-		{
-			_weapon.Shoot(target);
+			var knife = GetComponent<Knife>();
+			if (knife != null)
+			{
+				Destroy(knife);
+			}
 		}
 	}
 }

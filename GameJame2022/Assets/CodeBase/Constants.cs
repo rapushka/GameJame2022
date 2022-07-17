@@ -14,6 +14,7 @@
 		{
 			public const string PlayerPrefub = "Prefubs/Creatures/Player";
 			public const string KnifeSprite = "Sprites/Templates/Knife";
+			public const string GunSprite = "Sprites/Templates/Gun";
 		}
 	}
 }
