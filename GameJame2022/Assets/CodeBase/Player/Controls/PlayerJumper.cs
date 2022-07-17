@@ -22,23 +22,32 @@ namespace CodeBase.Player.Controls
 			_stateMachine = new PlayerStateMachine();
 		}
 
-		private Vector2 JumpDirection(Vector2 velocity)
-		{
-			return _stateMachine.CurrentState.GetJumpDirection(_jumpForce, velocity);
-		}
-
 		public void Jump()
 		{
-			_rigidbody.velocity = JumpDirection(_rigidbody.velocity);
+			_rigidbody.velocity = GetJumpDirection(_rigidbody.velocity);
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			EnterStateIfGround<StandingState>(collision);
+		}
+
+		private void OnCollisionExit2D(Collision2D collision)
+		{
+			EnterStateIfGround<FirstJumpState>(collision);
+		}
+
+		private Vector2 GetJumpDirection(Vector2 velocity) 
+			=> _stateMachine.CurrentState.GetJumpDirection(_jumpForce, velocity);
+
+		private void EnterStateIfGround<T>(Collision2D collision)
+			where T : MovementBaseState
 		{
 			const int defaultLayer = 0;
 			const int groundLayer = 12;
 			if (collision.gameObject.layer is groundLayer or defaultLayer)
 			{
-				_stateMachine.Enter<StandingState>();
+				_stateMachine.Enter<T>();
 			}
 		}
 	}
