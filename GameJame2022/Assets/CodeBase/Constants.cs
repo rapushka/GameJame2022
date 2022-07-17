@@ -12,7 +12,7 @@
 
 		public static class AssetPaths
 		{
-			public const string PlayerPrefub = "Prefubs/Player";
+			public const string PlayerPrefub = "Prefubs/Creatures/Player";
 		}
 	}
 }
