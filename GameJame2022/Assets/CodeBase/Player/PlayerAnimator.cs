@@ -13,7 +13,7 @@ namespace CodeBase.Player
 
 		private void Update()
 		{
-			_animator.SetBool(IsMoving, _mover);
+			_animator.SetBool(IsMoving, _mover.IsMoving);
 		}
 	}
 }
