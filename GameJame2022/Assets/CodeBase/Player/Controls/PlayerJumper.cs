@@ -30,8 +30,9 @@ namespace CodeBase.Player.Controls
 
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
-			const int groundLayerIndex = 12;
-			if (collision.gameObject.layer == groundLayerIndex)
+			const int defaultLayer = 0;
+			const int groundLayer = 12;
+			if (collision.gameObject.layer is groundLayer or defaultLayer)
 			{
 				_stateMachine.Enter<StandingState>();
 			}

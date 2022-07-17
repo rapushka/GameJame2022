@@ -11,9 +11,8 @@ namespace CodeBase.Logic.LevelGenerator
 	public class LevelGeneration : MonoBehaviour
 	{
 		[SerializeField] private float _moveAmount = 10f;
-		[SerializeField] private float _startTimeBetweenRoom = 0.25f;
-		
-		[Space] [SerializeField] private LayerMask _room;
+
+		[Space] [SerializeField] private LayerMask _layer;
 		
 		[Space] [SerializeField] private float _minX;
 		
@@ -29,11 +28,12 @@ namespace CodeBase.Logic.LevelGenerator
 
 
 		private int _direction;
-		private float _timeBetweenRoom;
-		private bool _stopGeneration = false;
+		private bool _stopGeneration;
 
 		private void Start()
 		{
+			_stopGeneration = false;
+			
 			Transform startingPosition = _startingPosition.GetRandomElement();
 			transform.position = startingPosition.position;
 
@@ -44,15 +44,9 @@ namespace CodeBase.Logic.LevelGenerator
 
 		private void Update()
 		{
-			if (_stopGeneration == false
-			    && _timeBetweenRoom <= 0)
+			if (_stopGeneration == false)
 			{
 				Move();
-				_timeBetweenRoom = _startTimeBetweenRoom;
-			}
-			else
-			{
-				_timeBetweenRoom -= Time.deltaTime;
 			}
 		}
 
@@ -103,7 +97,7 @@ namespace CodeBase.Logic.LevelGenerator
 			{
 				if (position.y > _minY)
 				{
-					Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, _room);
+					Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, _layer);
 					var roomType = roomDetection.GetComponent<RoomType>();
 					
 					if (roomType.Type != 1
@@ -123,7 +117,7 @@ namespace CodeBase.Logic.LevelGenerator
 					transform.position = new Vector2(position.x, position.y - _moveAmount);
 
 					int index = Random.Range(2, 4);
-					Instantiate(_rooms[index], position);
+					Instantiate(_rooms[index], transform.position);
 
 					_direction = Random.Range(1, 6);
 				}

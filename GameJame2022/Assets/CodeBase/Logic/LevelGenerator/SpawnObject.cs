@@ -10,7 +10,7 @@ namespace CodeBase.Logic.LevelGenerator
 		private void Start()
 		{
 			GameObject tile = _objects.GetRandomElement();
-			Instantiate(tile, transform.position, Quaternion.identity);
+			Instantiate(tile, transform.position, Quaternion.identity, transform);
 		}
 	}
 }
