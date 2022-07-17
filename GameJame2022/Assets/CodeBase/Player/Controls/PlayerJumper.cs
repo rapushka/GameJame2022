@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using CodeBase.Logic;
 using CodeBase.Player.States;
 using UnityEngine;
@@ -10,7 +9,6 @@ namespace CodeBase.Player.Controls
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerJumper : MonoBehaviour
 	{
-		[SerializeField] private TriggerObserver _legsTrigger;
 		[SerializeField] private float _jumpForce;
 
 		private PlayerStateMachine _stateMachine;
@@ -23,16 +21,6 @@ namespace CodeBase.Player.Controls
 			_stateMachine = new PlayerStateMachine();
 		}
 
-		private void OnEnable()
-		{
-			_legsTrigger.TriggerEnter += LegsTriggerOnTriggerEnter;
-		}
-
-		private void OnDisable()
-		{
-			_legsTrigger.TriggerEnter -= LegsTriggerOnTriggerEnter;
-		}
-
 		private Vector2 JumpDirection => _stateMachine.CurrentState.GetJumpDirection(_jumpForce);
 
 		public void Jump()
@@ -40,10 +28,10 @@ namespace CodeBase.Player.Controls
 			_rigidbody.velocity += JumpDirection;
 		}
 
-		private void LegsTriggerOnTriggerEnter(Collider2D col)
+		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			const int groundLayerIndex = 12;
-			if (col.gameObject.layer == groundLayerIndex)
+			if (collision.gameObject.layer == groundLayerIndex)
 			{
 				_stateMachine.Enter<StandingState>();
 			}
